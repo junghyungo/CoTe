@@ -6,11 +6,11 @@ pkm = {}
 num = {}
 
 for i in range(n):
-    a = input().rstrip()
+    a = input().strip()
     pkm[a] = i+1
     num[i+1] = a
 
 for i in range(m):
-    a = input().rstrip()
+    a = input().strip()
     if a.isdigit(): print(num[int(a)])
     else: print(pkm[a])
