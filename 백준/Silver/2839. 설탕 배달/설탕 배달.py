@@ -1,11 +1,16 @@
 n = int(input())
-cnt = 0
-while n>=0:
-    if n%5 == 0:
-        cnt += int(n//5)
-        print(cnt)
+ans = 0
+
+while True:
+    if n < 0:
+        ans = -1
         break
-    n -= 3
-    cnt += 1  
-else:
-    print(-1)
+    else:
+        if (n % 5) != 0:
+            n -= 3
+            ans += 1
+        else:
+            ans += n // 5
+            break
+
+print(ans)
