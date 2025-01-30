@@ -1,7 +1,8 @@
 n, k = map(int, input().split())
 
 # 공의 최소 필요 개수 (= k + (k - 1) + (k - 2) + ... + 1)
-sum_of_sequence = (k * (k+1)) // 2
+#sum_of_sequence = (k * (k+1)) // 2
+sum_of_sequence = sum([x for x in range(1, k+1)])
 
 # n이 최소 필요 개수 보다 작을때
 if (n < sum_of_sequence):
