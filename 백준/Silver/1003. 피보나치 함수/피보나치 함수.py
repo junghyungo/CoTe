@@ -1,21 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-# 최대 입력값을 고려한 DP 테이블 초기화
-# (0 <= n <= 40)
-dp = [[0, 0] for _ in range(41)]
-
-# 초기값 설정
-# fibonacci(0)의 0과 1 출력 횟수
-dp[0] = [1, 0]
-# fibonacci(1)의 0과 1 출력 횟수
-dp[1] = [0, 1]
-
-# 미리 구해놓고 출력
-for i in range(2, 41):
-    dp[i][0] = dp[i-1][0] + dp[i-2][0]
-    dp[i][1] = dp[i-1][1] + dp[i-2][1]
+def fibonacci_counts(n):
+    a, b = 1, 0  # f(0) 호출 횟수, f(1) 호출 횟수
+    c, d = 0, 1  # f(0) 호출 횟수, f(1) 호출 횟수 (n=1일 때)
+    
+    for _ in range(n):
+        a, b = b, a + b  # 0 호출 횟수 갱신
+        c, d = d, c + d  # 1 호출 횟수 갱신
+    
+    return a, c
 
 for _ in range(int(input())):
-    n = int(input())
-    print(dp[n][0], dp[n][1])
+    print(*fibonacci_counts(int(input())))
