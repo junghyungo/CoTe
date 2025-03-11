@@ -1,15 +1,13 @@
 import sys
 input = sys.stdin.readline
 
-def fibonacci_counts(n):
-    a, b = 1, 0  # f(0) 호출 횟수, f(1) 호출 횟수
-    c, d = 0, 1  # f(0) 호출 횟수, f(1) 호출 횟수 (n=1일 때)
-    
-    for _ in range(n):
-        a, b = b, a + b  # 0 호출 횟수 갱신
-        c, d = d, c + d  # 1 호출 횟수 갱신
-    
-    return a, c
+dp = [[0, 0] for _ in range(41)]
+dp[0], dp[1] = [1, 0], [0, 1]
+
+for i in range(2, 41):
+    dp[i][0] = dp[i-1][0] + dp[i-2][0]
+    dp[i][1] = dp[i-1][1] + dp[i-2][1]
 
 for _ in range(int(input())):
-    print(*fibonacci_counts(int(input())))
+    n = int(input())
+    print(*dp[n])
