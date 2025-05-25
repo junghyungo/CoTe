@@ -40,12 +40,9 @@ while True:
     time += 1
 
     if time in paths.keys():
-        if (paths[time] == "D"):
-            direction = (direction+1) % 4
-        else:
-            if (direction == 0):
-                direction = 3
-            else:
-                direction -= 1
+        if paths[time] == "D":
+            direction = (direction + 1) % 4
+        else:    
+            direction = (direction - 1) % 4
 
 print(time+1)
