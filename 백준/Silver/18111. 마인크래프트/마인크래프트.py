@@ -2,7 +2,7 @@ import sys
 input = sys.stdin.readline
 
 n, m, b = map(int, input().split())
-map = s = [[*map(int, input().split())] for _ in range(n)]
+map = [[*map(int, input().split())] for _ in range(n)]
 
 result_time = float('inf')
 result_height = 0
