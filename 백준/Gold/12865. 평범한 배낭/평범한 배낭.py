@@ -3,15 +3,15 @@ input = sys.stdin.readline
 
 n, k = map(int, input().split())
 
-dp = [[0]*(k+1) for _ in range(n+1)]
+bag = []
+dp = [0] * (k+1)
 
-for i in range(n):
+for _ in range(n):
     w, v = map(int, input().split())
+    bag.append((w, v))
 
-    for j in range(k + 1):
-        if (j < w):
-            dp[i+1][j] = dp[i][j]
-        else:
-            dp[i+1][j] = max(dp[i][j], dp[i][j-w] + v)
+for w, v in bag:
+    for i in range(k, w-1, -1):
+        dp[i] = max(dp[i], dp[i-w] + v)
 
-print(dp[n][k])
+print(dp[k])
